@@ -8,7 +8,6 @@ namespace RatAdventure
 {
 	static class Program
 	{
-		private const int textWrapChar = 30;
 
 		[STAThread]
 		static void Main()
@@ -19,26 +18,15 @@ namespace RatAdventure
 			Application.Run(new AlertBox(SpawnTree()));
 		}
 
-		static void LinearTreeMut(AlertInfo start, String[] muchoTexto) {
+		static AlertInfo LinearTreeMut(AlertInfo start, String[] muchoTexto) {
 			AlertInfo current = start;
 			foreach (String text in muchoTexto) {
-				String realText = text;
-				if (realText.Length > textWrapChar) {
-					int i = textWrapChar;
-					while (realText[i] != ' ' && i < realText.Length-1) {
-						i++;
-					}
-
-					// This is to edit the character in the text lol (mutability moment)
-					char[] chars = realText.ToCharArray();
-					chars[i] = '\n';
-					realText = new String(chars);
-				}
-
-				AlertInfo appendNode = new AlertInfo("ok", realText);
+				AlertInfo appendNode = new AlertInfo("ok", text);
 				current.AddButton(appendNode);
 				current = appendNode;
 			}
+
+			return current;
 		}
 
 		static AlertInfo Rat1() {
@@ -48,8 +36,16 @@ namespace RatAdventure
 		}
 
 		static AlertInfo Rat5() {
-			AlertInfo start = new AlertInfo("rat Five", "YOU CHO0SE RAT FIVE");
-			LinearTreeMut(start, Data.Rat5);
+			AlertInfo start = new AlertInfo("rat Five", "YOU CHO0SE RAT FIVE").AddHeader("PlayAudio", @"data\monster.wav");
+			AlertInfo last = LinearTreeMut(start, Data.Rat5_1);
+
+			AlertInfo yes = new AlertInfo("yeah", "HELL YEA MOTHER.FUCKER");
+			AlertInfo no = new AlertInfo("nope", "OK BRO THAT'S FINE, NOT EVERYONE HAS THE SAME TASTES,, BITCH!");
+
+			LinearTreeMut(yes, Data.Rat5_2);
+			LinearTreeMut(no, Data.Rat5_2);
+			last.AddButton(new AlertInfo("ok", "YOU EVER EAT CHEESE?", yes, no));
+
 			return start;
 		}
 
@@ -57,7 +53,7 @@ namespace RatAdventure
 			AlertInfo fakeBranch = new AlertInfo(
 				"...", "it says the first rat needs the cheese",
 				new AlertInfo(
-					"...", "a fifth rat comes in and says\nthe second rat does not need cheese",
+					"...", "a fifth rat comes in and says the second rat does not need cheese",
 					new AlertInfo(
 						"w", "whcih rat do you fgive the chesse",
 						// new AlertInfo("rat 1", ""),

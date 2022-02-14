@@ -56,8 +56,7 @@ namespace RatAdventure {
 			"I suppose there is no escape from that which emanates from within."
 		};
 
-		public static readonly String[] Rat5 = new String[] {
-			"[music plays idk how we do this pipe directly to audio output maybe?]",
+		public static readonly String[] Rat5_1 = new String[] {
 			"HEY IM RAT 5!!!!!!! BITCH!",
 			"YEAH IM A BIT LOUD",
 			"WHAT CAN I SAY BABY I GOT GOT DAMN RAT FEVER.!",
@@ -68,9 +67,9 @@ namespace RatAdventure {
 			"give me the fucking cheesm",
 			"THANKS OK COOL",
 			"I FUCKING LOVE CHEESE",
-			"YOU EVER EAT CHEESE?",
-			"- yes: HELL YEA MOTHER.FUCKER",
-			"- no: OK BRO THAT'S FINE, NOT EVERYONE HAS THE SAME TASTES,, BITCH!",
+		};
+
+		public static String[] Rat5_2 = new String[] {
 			"AIGHT imma EAT THIS CHEESE",
 			"[chomp.wav]",
 			"wtf",

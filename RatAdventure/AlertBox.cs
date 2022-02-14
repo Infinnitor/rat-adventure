@@ -38,6 +38,7 @@ namespace RatAdventure
 					this.tree = a;
 
 					if (a.HasHeader("PlayAudio")) {
+						// MessageBox.Show("aaa");
 						(new SoundPlayer(a.HeaderValue("PlayAudio"))).Play();
 					}
 
