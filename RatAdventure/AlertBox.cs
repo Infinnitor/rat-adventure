@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+
 
 namespace RatAdventure
 {
@@ -34,6 +36,11 @@ namespace RatAdventure
 			foreach (AlertInfo a in this.tree.buttons) {
 				if (a.buttonText == caller.Text) {
 					this.tree = a;
+
+					if (a.HasHeader("PlayAudio")) {
+						(new SoundPlayer(a.HeaderValue("PlayAudio"))).Play();
+					}
+
 					if (this.tree.buttons.Length == 0) {
 						MessageBox.Show((a.buttonText != "yay") ? "you died" : "the rat has eatn chesse");
 						Application.Exit();

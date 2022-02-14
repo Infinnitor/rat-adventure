@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace RatAdventure {
 	public class AlertInfo {
@@ -7,7 +8,11 @@ namespace RatAdventure {
 
 		public AlertInfo[] buttons;
 
-		private String imagePath = "";
+		private Dictionary<String, String> headers = new Dictionary<String, String>();
+		// HEADERS:
+		// PlayAudio : Audio Path
+		// ChangeImage : Image Path
+		// Die
 
 		public AlertInfo(String btn, String text, params AlertInfo[] alerts) {
 			this.buttonText = btn;
@@ -16,9 +21,17 @@ namespace RatAdventure {
 			this.buttons = alerts;
 		}
 
-		public AlertInfo AddImage(String path) {
-			this.imagePath = path;
+		public AlertInfo AddHeader(String h, String v) {
+			headers.Add(h, v);
 			return this;
+		}
+
+		public bool HasHeader(String h) {
+			return headers.ContainsKey(h);
+		}
+
+		public String HeaderValue(String h) {
+			return headers[h];
 		}
 
 		public void AddButton(params AlertInfo[] alerts) {
