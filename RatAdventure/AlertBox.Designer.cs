@@ -23,7 +23,7 @@ using System;
 			var ratImage = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(ratImage)).BeginInit();
 
-			String ratPath = @"C:\Users\Infinnitor\Desktop\Sketchbook\Code\CSharp\RatAdventure\data\rat.png";
+			String ratPath = @"data\rat.png";
 			ratImage.Image = System.Drawing.Image.FromFile(ratPath);
 			ratImage.Location = new System.Drawing.Point(this.w/2 - 50,this.h/3);
 			// ratImage.Size = new System.Drawing.Size(48, 40);
